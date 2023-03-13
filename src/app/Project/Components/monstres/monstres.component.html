@@ -1,0 +1,49 @@
+<button (click)="getMonstres()">Veure dades</button>
+<div class="tables">
+  <div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Accio</th>
+      </tr>
+      <tr *ngFor="let monster of ListMonstres">
+        <td>{{monster.name}}</td>
+        <td  (click)="showMonstreImage(monster.index)"><img class="eng" src="../../../../assets/images/eng.png"></td>
+        <input type="checkbox" (change)="updateMonstreInfo($event, monster.index)" >
+        <td><button (click)="getMonstre(monster.index)">Acció</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <div>
+      <img class="monsterImg" *ngIf="imageSelected" [src]="imageSelected">
+    </div><br>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Subtype</th>
+      </tr>
+      <tr *ngFor="let monster of completeInfoMonstre">
+        <td>{{monster.name}}</td>
+        <td>{{monster.type}}</td>
+        <div *ngIf="monster.subtype; else noSubtype">
+          <td>{{monster.subtype}}</td>
+        </div>
+        <ng-template #noSubtype>
+          <td>NA</td>
+        </ng-template>
+        <td>{{monster.subtype}}</td>
+        <div *ngIf="monster.legendary_actions.length; else noLlegendaries">
+          <td *ngFor="let legendary_action of monster.legendary_actions">Name: {{legendary_action.name}} Desc: {{legendary_action.desc}}</td>
+        </div>
+        <ng-template #noLlegendaries>
+          <td>Name: x Desc: No té accions llegendàries</td>
+        </ng-template>
+        <td><img class="monsterImg" [src]="url+monster.image"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,19 @@
+.eng {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.tables {
+  display: flex;
+  flex-direction: row;
+}
+
+.monsterImg {
+  max-width: 100px;
+  max-height: 200px;
+}
+
+table, td, tr {
+  border: solid black 1px;
+  border-collapse: collapse;
+}
